@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<html>
+<head>
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="~/Scripts/multiple-file-upload/jquery.MultiFile.js"></script>
+    <script>        
+        $('#uploadBtn').MultiFile({
+            accept: 'JPG|JPEG|PNG', //GIF|TIF|TIFF|BMP|
+            max: 1,
+            STRING: {
+                remove: 'Remove',
+                denied: 'Please upload either a JPG or PNG file.'
+            }
+        });
+    </script>
+
+</head>
+<body>
+    <h2>Image reductor</h2>
+    
+
+    @using (Html.BeginForm("Index", "Home", null, FormMethod.Post, new { @id = "EditPortfolioForm", role = "form", enctype = "multipart/form-data" }))
+    {
+
+        <input type="number" name="w" id="w" placeholder="width"><br>
+        <input type="number" name="h" id="h" placeholder="height"><br>
+        <input type="checkbox" name="fillCanvas" id="fillCanvas" checked="checked" /><span>Fill canvas</span><br>
+        <input type="file" name="uploadBtn" id="uploadBtn"><br>
+        <input type="submit" value="Upload Image" name="submit">
+    }
+    <br><br>
+    @{
+        if (ViewBag.imgUploadedAfter != null)
+        {
+            <span>Result</span>
+            <div>
+                <img src="@ViewBag.imgUploadedAfter" style="border: #555 solid 1px;" />
+            </div>
+            
+        }
+        if (ViewBag.NoResult == true)
+        {
+            <span>No result</span>
+        }
+        if (ViewBag.Error != null && ViewBag.Error != "")
+        {
+            <span>Error</span><br />
+            <span>@ViewBag.Error</span>
+        }
+    }
+</body>
+</html>
+
+
