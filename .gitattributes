@@ -5,5 +5,4 @@ $ cat .gitattributes
 # Custom for Visual Studio
 *.cs     diff=csharp
 
-
 ResizeMaxWH/Scripts/* linguist-vendored
