@@ -1,0 +1,9 @@
+$ cat .gitattributes
+*.rb linguist-language=csharp
+
+
+# Custom for Visual Studio
+*.cs     diff=csharp
+
+
+ResizeMaxWH/Scripts/* linguist-vendored
